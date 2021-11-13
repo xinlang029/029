@@ -16,7 +16,7 @@ jsproxy_config({
       label: '演示服务-香港节点',
       lines: {
         // 主机:权重
-        'node-aliyun-hk-0.etherdream.com:8443': 1,
+        'jh5.029sina.workers.dev': 1,
         'node-aliyun-hk-1.etherdream.com:8443': 1,
         'node-aliyun-hk-2.etherdream.com:8443': 1,
       }
@@ -24,7 +24,7 @@ jsproxy_config({
     'demo-sg': {
       label: '演示服务-新加坡节点',
       lines: {
-        'node-aliyun-sg.etherdream.com:8443': 1,
+        'jh9.029sina.workers.dev': 1,
       },
     },
     'mysite': {
