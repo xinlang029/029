@@ -24,7 +24,7 @@ jsproxy_config({
       label: '演示服务-新加坡节点',
       lines: {
         'jh9.029sina.workers.dev': 1,
-      },
+      }
     },
     'mysite': {
       label: '当前站点',
