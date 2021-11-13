@@ -2,137 +2,43 @@ jsproxy_config({
   // 当前配置的版本（记录在日志中，用于排查问题）
   // 每次修改配置，该值需要增加，否则不会生效。
   // 默认每隔 5 分钟自动下载配置，若想立即验证，可通过隐私模式访问。
-  ver: '110',
+  ver: '118',
 
   // 通过 CDN 加速常用网站的静态资源（实验中）
   static_boost: {
     enable: true,
-    ver: 62
+    ver: 79
   },
 
   // 节点配置
   node_map: {
     'demo-hk': {
-      label: 'yy-2点',
+      label: '演示服务-香港节点',
       lines: {
-        '2.yd029.workers.dev': 1,
-        'jh2.029sina.workers.dev': 2,
+        // 主机:权重
+        'node-aliyun-hk-0.etherdream.com:8443': 1,
+        'node-aliyun-hk-1.etherdream.com:8443': 1,
+        'node-aliyun-hk-2.etherdream.com:8443': 1,
       }
-   },
+    },
     'demo-sg': {
-      label: '1-639-节点',
+      label: '演示服务-新加坡节点',
       lines: {
-        '1.693.workers.dev': 1,
-      }
-    },
-    'demok-sg': {
-      label: '1.wv1-节点',
-      lines: {
-        '1.wv1.workers.dev': 1,
-      }
-   },
-    'dshjh': {
-      label: '1112v-kmw',
-      lines: {
-        '1112v.029.workers.dev': 1,
-      }
-    },
-    'sffs-ij': {
-      label: 'sparkling-kmw',
-      lines: {
-        'sparkling-dust-39b8.029.workers.dev': 1,
-      }
-    },
-    'suyb-okm': {
-      label: 'term-kmw',
-      lines: {
-        'throbbing-term-1ac3.029.workers.dev': 1,
-      }
-    },
-    'fafar-dffds': {
-      label: 'damp-kmw',
-      lines: {
-        'damp-sea-e13b.029.workers.dev': 1,
-      }
-    },
-    'dfgd-gfd': {
-      label: 'billowing-kmw',
-      lines: {
-        'billowing-silence-c555.029.workers.dev': 1,
-      }
-    },
-    'fdgd-fgr': {
-      label: '1112u-kmw',
-      lines: {
-        '1112u.029.workers.dev': 1,
-      }
+        'node-aliyun-sg.etherdream.com:8443': 1,
+      },
     },
     'mysite': {
-      label: 'b5站点',
+      label: '当前站点',
       lines: {
-        'rapid-salad-f4b5.vvread.workers.dev': 1,
+        [location.host]: 1,
       }
     },
-    'kjnokj': {
-      label: 'jh5站点',
-      lines: {
-        'jh5.029sina.workers.dev': 1,
-      }
-    },
-    'lkmjij': {
-      label: 'jh2.029ff站点',
-      lines: {
-        'jh2.029sina.workers.dev': 1,
-     }
-    },
-    'lkkjh': {
-      label: 'j.xj2站点',
-      lines: {
-        'j.xj2.workers.dev': 1,
-     }
-    },
-    'lkujhj': {
-      label: '64ee.693站点',
-      lines: {
-        'damp-shape-64ee.693.workers.dev': 1,
-     }
-    },
-    'dfeifdfj': {
-      label: 'feichang99站点',
-      lines: {
-        'feichang.029.workers.dev': 1,
-     }
-    },
-    'lkmrdvj': {
-      label: '1.693站点',
-      lines: {
-        '1.693.workers.dev': 1,
-     }
-    },
+    // 该节点用于加载大体积的静态资源
     'cfworker': {
-      label: 'jz',
+      label: '',
+      hidden: true,
       lines: {
-        'jj.693.workers.dev': 1,
-        'j.xj2.workers.dev': 1,
-        'damp-shape-64ee.693.workers.dev': 1,
-        'dark-bread-0041.693.workers.dev': 1,
-        'red-breeze-27a6.693.workers.dev': 1,
-        'jh5.029sina.workers.dev': 1,
-        '1.yd139.workers.dev': 1,
-        '1.wv1.workers.dev': 1,
-        '2.yd029.workers.dev': 1,
-        'jh.029sina.workers.dev': 1,
-        'bold-sky-960f.693.workers.dev': 1,
-        'proud-moon-1d61.693.workers.dev': 1,
-        'dark-block-0f89.693.workers.dev': 1,
-        'hidden-mud-dfe9.693.workers.dev': 1,
-        '1.693.workers.dev': 1,
-        '1112u.029.workers.dev': 1,
-        '1112v.029.workers': 1,
-        'sparkling-dust-39b8.029.workers.dev': 1,
-        'throbbing-term-1ac3.029.workers.dev': 1,
-        'damp-sea-e13b.029.workers.dev': 1,
-        'billowing-silence-c555.029.workers.dev': 1,
+        'node-cfworker-2.etherdream.com': 1,
       }
     }
   },
@@ -140,8 +46,8 @@ jsproxy_config({
   /**
    * 默认节点
    */
-  node_default: 'mysite',
-  // node_default: /jsproxy-demo\.\w+$/.test(location.host) ? 'demo-hk' : 'mysite',
+  // node_default: 'mysite',
+  node_default: /github\.io$/.test(location.host) ? 'demo-hk' : 'mysite',
 
   /**
    * 加速节点
@@ -152,7 +58,7 @@ jsproxy_config({
    * 静态资源 CDN 地址
    * 用于加速 `assets` 目录中的资源访问
    */
-  assets_cdn: 'https://cdn.jsdelivr.net/gh/zjcqoo/zjcqoo.github.io@master/assets/',
+  assets_cdn: 'https://cdn.jsdelivr.net/gh/zjcqoo/https://github.com/zjcqoo/zjcqoo.github.io/blob/master/zjcqoo.github.io@master/assets/',
 
   // 本地测试时打开，否则访问的是线上的
   // assets_cdn: 'assets/',
@@ -172,7 +78,7 @@ jsproxy_config({
    * URL 自定义处理（设计中）
    */
   url_handler: {
-    'https://www.baidu.com/img/baidu_resultlogo@2.png': {
+    'https://www.baidu.com/img/https://github.com/zjcqoo/zjcqoo.github.io/blob/master/baidu_resultlogo@2.png': {
       replace: 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png'
     },
     'https://www.pornhub.com/': {
