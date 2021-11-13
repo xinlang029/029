@@ -35,9 +35,7 @@ jsproxy_config({
     // 该节点用于加载大体积的静态资源
     'cfworker': {
       label: '',
-      hidden: yes,
       lines: {
-        // 收费版（高权重）
         'jh9.029sina.workers.dev': 1,
 
         // 免费版（低权重，分摊一些成本）
