@@ -23,7 +23,7 @@ jsproxy_config({
     'demo-sg': {
       label: '演示服务-新加坡节点',
       lines: {
-        'node-aliyun-sg.etherdream.com:8443': 1,
+        'jh5.029sina.workers.dev': 1,
       },
     },
     'mysite': {
@@ -32,7 +32,6 @@ jsproxy_config({
         [location.host]: 1,
       }
     },
-    // 该节点用于加载大体积的静态资源
     'cfworker': {
       label: '',
       lines: {
