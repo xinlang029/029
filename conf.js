@@ -13,10 +13,10 @@ jsproxy_config({
   // 节点配置
   node_map: {
     'demo-hk': {
-      label: 'yy-2点',
+      label: 'jh9点',
       lines: {
-        'jh9.029sina.workers.dev': 1,
-        'crimson-snow-3307.029sina.workers.dev': 2,
+        '029hh.jh9.029hh.workers.dev': 1,
+        
       }
    },
     'demo-sg': {
